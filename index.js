@@ -1,10 +1,8 @@
-
 require('dotenv').config();
 const { program } = require('commander');
+const ora = require('ora');
 
-const ora = require('ora')
 const { getPersons } = require('./options/person/getPersons');
-
 
 program.option('getPersons --page').option('--type');
 program.option('getPerson ').option('--id');
@@ -20,7 +18,7 @@ function start() {
   const input = program.args;
   switch (input[0]) {
     case 'getPersons':
-      getPersons(input[1], input[2])
+      getPersons(input[1], input[2]);
       break;
     case 'getPerson':
       console.log(`tu quieres ver a una persona con`);
@@ -40,7 +38,3 @@ function start() {
 }
 
 start();
-
-
-
-
