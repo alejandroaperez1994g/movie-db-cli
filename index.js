@@ -3,6 +3,7 @@ const { program } = require('commander');
 const ora = require('ora');
 
 const { getPersons } = require('./options/person/getPersons');
+const { getPerson } = require('./options/person/getPerson');
 
 program.option('getPersons --page').option('--type');
 program.option('getPerson ').option('--id');
@@ -21,7 +22,7 @@ function start() {
       getPersons(input[1], input[2]);
       break;
     case 'getPerson':
-      console.log(`tu quieres ver a una persona con`);
+      getPerson(input[1]);
       break;
     case 'getMovies':
       console.log(`tu quieres ver movies`);
