@@ -46,7 +46,6 @@ const getPersons = async (page, personType) => {
     //We must show the help information because some option was wrong
     console.log('something went wrong');
   }
-  console.log(page, personType);
 
 };
 

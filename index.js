@@ -18,7 +18,6 @@ const options = program.opts();
 
 function start() {
   const input = program.args;
-  console.log(input);
   switch (input[0]) {
     case 'getPersons':
       getPersons(input[1], input[2])
