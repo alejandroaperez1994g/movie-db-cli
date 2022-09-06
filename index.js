@@ -5,8 +5,8 @@ const chalk = require('chalk');
 
 const { getPersons } = require('./options/person/getPersons');
 const { getPerson } = require('./options/person/getPerson');
-const { getNowPlaying } = require('./options/movies/getNowPlaying')
-
+const { getNowPlaying } = require('./options/movies/getNowPlaying');
+const { getPopularMovies } = require('./options/movies/getPopularMovies');
 program
   .name('moviedb-cli')
   .description('CLI to make requests to themoviedb.org')
@@ -66,7 +66,7 @@ function start() {
       }
       break;
     case 'getMovies':
-      console.log(`tu quieres ver movies`);
+      getPopularMovies(input[2]);
       console.log(input[2], input[4]);
       getNowPlaying(input[2], input[4]);
       break;
