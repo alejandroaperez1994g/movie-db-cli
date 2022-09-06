@@ -29,7 +29,7 @@ npm index.js --help
 
 ## ORGANIZATION
 
-First setps:
+First setps:<br>
 -Define the libraries to use and install them<br>
 -Define the folder tree <br>
 -Develop the index entry<br>
