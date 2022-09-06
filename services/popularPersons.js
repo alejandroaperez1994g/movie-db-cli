@@ -34,7 +34,6 @@ const getPopularPersons = async (page) => {
       }
       formatResponse(body);
       setTimeout(() => {
-        getPopularPersons(page);
         spinner.succeed('All done 🥳');
         spinner.stop();
       }, 1500);

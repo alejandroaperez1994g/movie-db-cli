@@ -1,17 +1,13 @@
 const ora = require('ora');
 const chalk = require('chalk');
-const {nowPlaying} = require('../../services/nowPlaying')
+const { nowPlaying } = require('../../services/nowPlaying');
 
-const getNowPlaying = (page, typeMovie) => {
-  if(typeMovie == "now-playing"){
-    nowPlaying(page);
-  }else{
-    nowPlaying(1);
-  }
-}
+const getNowPlaying = (page) => {
+  nowPlaying(page);
+};
 
 const displayNowPlaying = (data) => {
-  data.results.map(movie => {
+  data.results.map((movie) => {
     console.log(`\n`);
     console.log(`Movie: `);
     console.log(`Movie Id: ${chalk.white(movie.id)}`);
@@ -19,10 +15,11 @@ const displayNowPlaying = (data) => {
     console.log(`Movie Release Date: ${chalk.white(movie.release_date)} `);
 
     console.log('--------------------------------------');
-  })
+  });
   console.log(`Page: ${data.page} from ${data.total_pages} pages`);
-}
+};
 
 module.exports = {
-  getNowPlaying, displayNowPlaying
-}
+  getNowPlaying,
+  displayNowPlaying,
+};

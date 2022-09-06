@@ -14,19 +14,35 @@ program
 
 program
   .command('getPersons')
-  .option('getPersons --page')
-  .option('--type')
-  .description(`Get persons data`);
+  .option('getPersons --page <number>')
+  .option('--type <string>')
+  .description(`Get persons data`)
+  .action((options) => {
+    getPersons(Number(options.page), options.type);
+    return;
+  });
 program
   .command('getPerson')
   .option('getPerson ')
-  .option('--id')
-  .description(`Get data of specific person`);
+  .option('--id <number>')
+  .description(`Get data of specific person`)
+  .action((options) => {
+    getPerson(Number(options.id));
+  });
+
 program
   .command(`getMovies`)
-  .option('getMovies --page')
-  .option('--type')
-  .description(`Get data of differents types of movies`);
+  .option('--page <number>')
+  .option('--type <string>')
+  .description(`Get data of differents types of movies`)
+  .action((options) => {
+    const page = isNaN(Number(options.page)) ? 1 : Number(options.page);
+    if (options.type === 'popular') {
+      getPopularMovies(page);
+      return;
+    }
+    getNowPlaying(page);
+  });
 program
   .command(`getMovie`)
   .option('getMovie')
@@ -35,50 +51,3 @@ program
 // program.option('--help');
 
 program.parse();
-
-function start() {
-  const input = program.args;
-  switch (input[0]) {
-    case 'getPersons':
-      if (
-        Number(input[2]) > 0 &&
-        (input[4] === 'latest' || input[4] === 'popular')
-      ) {
-        getPersons(input[2], input[4]);
-      } else {
-        console.log(
-          `${chalk.bold(
-            `Something unexpected happened, check the parameters of the entered command.`
-          )}`
-        );
-      }
-      break;
-    case 'getPerson':
-      if (!isNaN(Number(input[2]))) {
-        getPerson(input[2]);
-      } else {
-        console.log(input);
-        console.log(
-          `${chalk.bold(
-            `Something unexpected happened, check the id parameter of the command.`
-          )}`
-        );
-      }
-      break;
-    case 'getMovies':
-      getPopularMovies(input[2]);
-      console.log(input[2], input[4]);
-      getNowPlaying(input[2], input[4]);
-      break;
-    case 'getMovie':
-      console.log(`tu quieres ver una pelicula`);
-      break;
-    case 'help':
-      console.log('tu quieres ayuda');
-      break;
-    default:
-      console.log('ayuda');
-  }
-}
-
-start();
