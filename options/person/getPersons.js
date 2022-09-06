@@ -6,21 +6,9 @@ const chalk = require('chalk');
 const getPersons = async (page, personType) => {
   if (personType == 'popular') {
     //Call to get popular people with the page
-
     const spinner = ora('Fetching Populars Persons');
 
-    // spinner.start();
-
-    // Update
-    // setTimeout(() => {
-    //   spinner.color = 'yellow';
-    //   spinner.text = 'Connecting ';
-    // }, 1000);
-    // setTimeout(() => {
     getPopularPersons(page);
-    //   spinner.succeed('All done 🥳');
-    //   spinner.stop();
-    // }, 1500);
   } else if (personType == 'latest') {
     //Call to get lastest person with the page
 
