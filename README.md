@@ -7,8 +7,9 @@ This project consist on a CLI, that allows the user to request an api to get mos
 npm install
 
 ## CONFIGURATION
-npm install commander
-npm install ora
+npm install commander<br>
+npm install ora<br>
+npm install --save node-notifier
 
 ## APIKEY
 You muest use your API KEY from api.themoviedb.org and put it on the .env file(see .env.example)
