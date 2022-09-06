@@ -18,9 +18,11 @@ program
   .command('getPersons')
   .option('getPersons --page <number>')
   .option('--type <string>')
+  .option('--save')
   .description(`Get persons data`)
   .action((options) => {
-    getPersons(Number(options.page), options.type);
+    const save = (options.save ? options.save : false);
+    getPersons(Number(options.page), options.type, save);
     return;
   });
 program
@@ -36,14 +38,16 @@ program
   .command(`getMovies`)
   .option('--page <number>')
   .option('--type <string>')
+  .option('--save')
   .description(`Get data of differents types of movies`)
   .action((options) => {
+    const save = (options.save ? options.save : false);
     const page = isNaN(Number(options.page)) ? 1 : Number(options.page);
     if (options.type === 'popular') {
-      getPopularMovies(page);
+      getPopularMovies(page, save);
       return;
     }
-    getNowPlaying(page);
+    getNowPlaying(page, save);
   });
 program
   .command(`getMovie`)

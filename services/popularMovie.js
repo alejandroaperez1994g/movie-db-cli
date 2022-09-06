@@ -2,8 +2,10 @@ const chalk = require('chalk');
 const https = require('node:https');
 const ora = require('ora');
 
-const getPopularsMovies = async (page) => {
+const getPopularsMovies = async (page, save) => {
+  const path = '../movies/popular-movies.json';
   const { formatPopularMovie } = require('../options/movies/getPopularMovies');
+  const { saveInfo } = require('../utils/save')
   const spinner = ora('Fetching Populars Persons');
 
   const options = {
@@ -30,7 +32,9 @@ const getPopularsMovies = async (page) => {
         spinner.fail(`Something went wrong 😰`);
         return;
       }
-      //   displayLatestPerson(body);
+
+      if(save)
+        saveInfo('./movies/popular-movies.json', body);
       formatPopularMovie(body);
       spinner.succeed('All done 🥳');
       spinner.stop();

@@ -2,9 +2,10 @@ const https = require('node:https');
 const ora = require('ora');
 const chalk = require('chalk');
 
-const nowPlaying = async(page) => {
+const nowPlaying = async(page, save) => {
   const spinner = ora('Fetch the movies that are playing now');
   const {displayNowPlaying} = require('../options/movies/getNowPlaying')
+  const { saveInfo } = require('../utils/save')
   
   const options = {
     hostname: `api.themoviedb.org`,
@@ -30,6 +31,8 @@ const nowPlaying = async(page) => {
         spinner.fail(`Something went wrong 😰`);
         return;
       }
+      if(save)
+        saveInfo('./movies/now-playing-movies.json', body);
       displayNowPlaying(body);
       spinner.succeed('All done 🥳');
       spinner.stop();

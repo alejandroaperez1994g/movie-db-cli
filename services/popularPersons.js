@@ -2,9 +2,9 @@ const https = require('node:https');
 const ora = require('ora');
 const chalk = require('chalk');
 
-const getPopularPersons = async (page) => {
+const getPopularPersons = async (page, save) => {
   const spinner = ora('Fetching Populars Persons');
-
+  const { saveInfo } = require('../utils/save')
   const { formatResponse } = require('../options/person/getPersons');
   const options = {
     hostname: `api.themoviedb.org`,
@@ -32,6 +32,8 @@ const getPopularPersons = async (page) => {
         spinner.fail(`Something went wrong 😰`);
         return;
       }
+      if(save)
+        saveInfo('./persons/popular-persons.json', body);
       formatResponse(body);
       setTimeout(() => {
         spinner.succeed('All done 🥳');

@@ -2,8 +2,8 @@ const ora = require('ora');
 const chalk = require('chalk');
 const { getPopularsMovies } = require('../../services/popularMovie');
 
-const getPopularMovies = (page) => {
-  getPopularsMovies(page);
+const getPopularMovies = (page, save) => {
+  getPopularsMovies(page, save);
 };
 
 const formatPopularMovie = (data) => {

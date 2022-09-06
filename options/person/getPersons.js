@@ -3,12 +3,12 @@ const { getPopularPersons } = require('../../services/popularPersons');
 const ora = require('ora');
 const chalk = require('chalk');
 
-const getPersons = async (page, personType) => {
+const getPersons = async (page, personType, save) => {
   if (personType == 'popular') {
     //Call to get popular people with the page
     const spinner = ora('Fetching Populars Persons');
 
-    getPopularPersons(page);
+    getPopularPersons(page, save);
   } else if (personType == 'latest') {
     //Call to get lastest person with the page
 
