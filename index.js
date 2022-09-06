@@ -19,10 +19,12 @@ program
   .option('getPersons --page <number>')
   .option('--type <string>')
   .option('--save')
+  .option('--local')
   .description(`Get persons data`)
   .action((options) => {
     const save = (options.save ? options.save : false);
-    getPersons(Number(options.page), options.type, save);
+    const local = (options.local ? options.local : false);
+    getPersons(Number(options.page), options.type, save,local);
     return;
   });
 program
@@ -39,15 +41,17 @@ program
   .option('--page <number>')
   .option('--type <string>')
   .option('--save')
+  .option('--local')
   .description(`Get data of differents types of movies`)
   .action((options) => {
     const save = (options.save ? options.save : false);
+    const local = (options.local ? options.local : false);
     const page = isNaN(Number(options.page)) ? 1 : Number(options.page);
     if (options.type === 'popular') {
-      getPopularMovies(page, save);
+      getPopularMovies(page, save, local);
       return;
     }
-    getNowPlaying(page, save);
+    getNowPlaying(page, save, local);
   });
 program
   .command(`getMovie`)

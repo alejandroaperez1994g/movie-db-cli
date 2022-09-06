@@ -2,11 +2,20 @@ const chalk = require('chalk');
 const https = require('node:https');
 const ora = require('ora');
 
-const getPopularsMovies = async (page, save) => {
+const getPopularsMovies = async (page, save,local) => {
   const path = '../movies/popular-movies.json';
   const { formatPopularMovie } = require('../options/movies/getPopularMovies');
   const { saveInfo } = require('../utils/save')
+  const { readFromFile } = require('../utils/read')
   const spinner = ora('Fetching Populars Persons');
+
+
+  if(local){
+    const data = readFromFile('./movies/popular-movies.json')
+    formatPopularMovie(data);
+    return;
+  }
+
 
   const options = {
     hostname: `api.themoviedb.org`,

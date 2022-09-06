@@ -2,8 +2,8 @@ const ora = require('ora');
 const chalk = require('chalk');
 const { nowPlaying } = require('../../services/nowPlaying');
 
-const getNowPlaying = (page, save) => {
-  nowPlaying(page, save);
+const getNowPlaying = (page, save, local) => {
+  nowPlaying(page, save, local);
 };
 
 const displayNowPlaying = (data) => {

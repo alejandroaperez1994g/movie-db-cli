@@ -2,16 +2,23 @@ const https = require('node:https');
 const ora = require('ora');
 const chalk = require('chalk');
 
-const nowPlaying = async(page, save) => {
+const nowPlaying = async(page, save, local) => {
   const spinner = ora('Fetch the movies that are playing now');
   const {displayNowPlaying} = require('../options/movies/getNowPlaying')
   const { saveInfo } = require('../utils/save')
+  const { readFromFile} = require('../utils/read')
   
   const options = {
     hostname: `api.themoviedb.org`,
     path: `/3/movie/now_playing?api_key=${process.env.MOVIE_DB_API_KEY}&language=en-US&page=${page}`,
     method: 'GET',
   };
+
+  if(local){
+    const data = readFromFile('./movies/now-playing-movies.json')
+    displayNowPlaying(data);
+    return;
+  }
 
   const req = await https.request(options, (res) => {
     spinner.start();
