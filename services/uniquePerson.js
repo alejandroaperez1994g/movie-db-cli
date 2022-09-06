@@ -1,7 +1,10 @@
 const https = require('node:https');
+const chalk = require('chalk');
+const ora = require('ora');
 
 const getPersonById = async (id) => {
   const { formatPerson } = require('../options/person/getPerson');
+  const spinner = ora('Fetching Populars Persons');
 
   const options = {
     hostname: `api.themoviedb.org`,
@@ -10,19 +13,29 @@ const getPersonById = async (id) => {
   };
 
   const req = await https.request(options, (res) => {
-    try {
-      let data = '';
-      res.on('data', (d) => {
-        data = data + d;
-      });
+    spinner.start();
+    setTimeout(() => {
+      spinner.color = 'yellow';
+      spinner.text = 'Connecting ';
+    }, 1000);
 
-      res.on('end', () => {
-        const body = JSON.parse(data);
-        formatPerson(body);
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    spinner.color = 'green';
+    let data = '';
+    res.on('data', (d) => {
+      data = data + d;
+    });
+
+    res.on('end', () => {
+      const body = JSON.parse(data);
+      if (body.status_code) {
+        console.log('\n' + chalk.red(body.status_message));
+        spinner.fail(`Something went wrong 😰`);
+        return;
+      }
+      formatPerson(body);
+      spinner.succeed('All done 🥳');
+      spinner.stop();
+    });
   });
 
   req.end();

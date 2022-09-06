@@ -9,34 +9,22 @@ const getPersons = async (page, personType) => {
 
     const spinner = ora('Fetching Populars Persons');
 
-    spinner.start();
+    // spinner.start();
 
     // Update
-    setTimeout(() => {
-      spinner.color = 'yellow';
-      spinner.text = 'Connecting ';
-    }, 1000);
-    setTimeout(() => {
-      getPopularPersons(page);
-      spinner.succeed('All done 🥳');
-      spinner.stop();
-    }, 1500);
+    // setTimeout(() => {
+    //   spinner.color = 'yellow';
+    //   spinner.text = 'Connecting ';
+    // }, 1000);
+    // setTimeout(() => {
+    getPopularPersons(page);
+    //   spinner.succeed('All done 🥳');
+    //   spinner.stop();
+    // }, 1500);
   } else if (personType == 'latest') {
     //Call to get lastest person with the page
-    const spinner = ora('Fetching Populars Persons');
 
-    spinner.start();
-
-    // Update
-    setTimeout(() => {
-      spinner.color = 'yellow';
-      spinner.text = 'Connecting ';
-    }, 1000);
-    setTimeout(() => {
-      getLatestPerson(page);
-      spinner.succeed('All done 🥳');
-      spinner.stop();
-    }, 1500);
+    getLatestPerson(page);
   } else {
     //We must show the help information because some option was wrong
     console.log('something went wrong');
@@ -59,7 +47,8 @@ const formatResponse = (data) => {
 };
 
 const displayLatestPerson = (data) => {
-  console.log('Person: ');
+  console.log(`\n`);
+  console.log(`Person: `);
   console.log(`Person Id: ${data.id}`);
   console.log(`Person Name: ${data.name}`);
   console.log(`Person Department: ${data.known_for_department || `Acting`} `);
@@ -79,6 +68,7 @@ const formatMoviesPersons = (movies) => {
 
 const displayPopularPersons = (data) => {
   data.map((person) => {
+    console.log(`\n`);
     console.log('Person: ');
     console.log(chalk.white(`Person Id: ${person.id}`));
     console.log(chalk.bold(`Person Name: ${chalk.blue(person.name)}`));

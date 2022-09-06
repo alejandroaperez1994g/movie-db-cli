@@ -40,10 +40,10 @@ function start() {
   switch (input[0]) {
     case 'getPersons':
       if (
-        Number(input[1]) > 0 &&
-        (input[2] === 'latest' || input[2] === 'popular')
+        Number(input[2]) > 0 &&
+        (input[4] === 'latest' || input[4] === 'popular')
       ) {
-        getPersons(input[1], input[2]);
+        getPersons(input[2], input[4]);
       } else {
         console.log(
           `${chalk.bold(
@@ -53,9 +53,10 @@ function start() {
       }
       break;
     case 'getPerson':
-      if (!isNaN(Number(input[1]))) {
-        getPerson(input[1]);
+      if (!isNaN(Number(input[2]))) {
+        getPerson(input[2]);
       } else {
+        console.log(input);
         console.log(
           `${chalk.bold(
             `Something unexpected happened, check the id parameter of the command.`

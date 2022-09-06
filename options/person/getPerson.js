@@ -3,18 +3,7 @@ const chalk = require('chalk');
 const { getPersonById } = require('../../services/uniquePerson');
 
 const getPerson = (id) => {
-  const spinner = ora('Fetching Populars Persons');
-
-  spinner.start();
-  setTimeout(() => {
-    spinner.color = 'yellow';
-    spinner.text = 'Connecting ';
-  }, 1000);
-  setTimeout(() => {
-    getPersonById(id);
-    spinner.succeed('All done 🥳');
-    spinner.stop();
-  }, 1500);
+  getPersonById(id);
 };
 
 const formatPerson = (data) => {
