@@ -6,15 +6,34 @@ const chalk = require('chalk');
 const { getPersons } = require('./options/person/getPersons');
 const { getPerson } = require('./options/person/getPerson');
 
-program.option('getPersons --page').option('--type');
-program.option('getPerson ').option('--id');
-program.option('getMovies --page').option('--type');
-program.option('getMovies').option('--id');
-program.option('--help');
+program
+  .name('moviedb-cli')
+  .description('CLI to make requests to themoviedb.org')
+  .version('0.1.0');
+
+program
+  .command('getPersons')
+  .option('getPersons --page')
+  .option('--type')
+  .description(`Get persons data`);
+program
+  .command('getPerson')
+  .option('getPerson ')
+  .option('--id')
+  .description(`Get data of specific person`);
+program
+  .command(`getMovies`)
+  .option('getMovies --page')
+  .option('--type')
+  .description(`Get data of differents types of movies`);
+program
+  .command(`getMovie`)
+  .option('getMovie')
+  .option('--id')
+  .description(`Get data of specific movie`);
+// program.option('--help');
 
 program.parse();
-
-const options = program.opts();
 
 function start() {
   const input = program.args;
