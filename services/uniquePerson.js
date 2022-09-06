@@ -2,7 +2,7 @@ const https = require('node:https');
 
 const getPersonById = async (id) => {
   const { formatPerson } = require('../options/person/getPerson');
-  const { formatResponse } = require('../options/person/getPersons');
+
   const options = {
     hostname: `api.themoviedb.org`,
     path: `/3/person/${id}?api_key=${process.env.MOVIE_DB_API_KEY}&language=en-US`,
@@ -13,12 +13,11 @@ const getPersonById = async (id) => {
     try {
       let data = '';
       res.on('data', (d) => {
-        data = data + d.toString();
+        data = data + d;
       });
 
       res.on('end', () => {
         const body = JSON.parse(data);
-
         formatPerson(body);
       });
     } catch (err) {
