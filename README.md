@@ -20,11 +20,11 @@ npm index.js --help
 
 ## RESOURCES
 
-● chalk: <a>https://www.npmjs.com/package/chalk</a>
-● commander: <a>https://www.npmjs.com/package/commander</a>
-● dotenv: <a>https://www.npmjs.com/package/dotenv</a>
-● node-notifier: <a>https://www.npmjs.com/package/node-notifier</a>
-● ora: <a>https://www.npmjs.com/package/ora/v/0.3.0</a>
+● chalk: <a>https://www.npmjs.com/package/chalk</a><br>
+● commander: <a>https://www.npmjs.com/package/commander</a><br>
+● dotenv: <a>https://www.npmjs.com/package/dotenv</a><br>
+● node-notifier: <a>https://www.npmjs.com/package/node-notifier</a><br>
+● ora: <a>https://www.npmjs.com/package/ora/v/0.3.0</a><br>
 
 ## ORGANIZATION
 
