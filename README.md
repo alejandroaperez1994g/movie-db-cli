@@ -30,13 +30,13 @@ npm index.js --help
 ## ORGANIZATION
 
 First setps:
--Define the libraries to use and install them
--Define the folder tree 
--Develop the index entry
--Develop request for persons from API
--Develop request for movies from API
--Develop request for persons from Local
--Develop request for persons from Local
+-Define the libraries to use and install them<br>
+-Define the folder tree <br>
+-Develop the index entry<br>
+-Develop request for persons from API<br>
+-Develop request for movies from API<br>
+-Develop request for persons from Local<br>
+-Develop request for persons from Local<br>
 
 ## COLABORATORS
 <a href="https://github.com/alejandroaperez1994g">Alejandro Ávila</a><br>
