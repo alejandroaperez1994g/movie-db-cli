@@ -13,7 +13,7 @@ npm install ora
 ## APIKEY
 You muest use your API KEY from api.themoviedb.org and put it on the .env file(see .env.example)
 
-##COMMANDS
+## COMMANDS
 Tap the next command on your terminal to see the availables command on the CLI
 
 npm index.js --help
