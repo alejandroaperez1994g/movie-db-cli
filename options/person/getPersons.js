@@ -67,10 +67,12 @@ const displayPopularPersons = (data) => {
     console.log('Person Movies: ');
     if (person.movies.length > 0) {
       person.movies.map((movie) => {
-        console.log('Movie: ');
-        console.log(`\tID: ${chalk.white(movie.ID)}`);
-        console.log(`\tRelease date: ${chalk.white(movie.release_date)}`);
-        console.log(`\tTitle: ${chalk.white(movie.title)}`);
+        if (movie.title != undefined) {
+          console.log('Movie: ');
+          console.log(`\tID: ${chalk.white(movie.ID)}`);
+          console.log(`\tRelease date: ${chalk.white(movie.release_date)}`);
+          console.log(`\tTitle: ${chalk.white(movie.title)}`);
+        }
       });
     } else {
       console.log('No movies are founded');

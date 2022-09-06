@@ -7,6 +7,8 @@ const { getPersons } = require('./options/person/getPersons');
 const { getPerson } = require('./options/person/getPerson');
 const { getNowPlaying } = require('./options/movies/getNowPlaying');
 const { getPopularMovies } = require('./options/movies/getPopularMovies');
+const { getMovie } = require('./options/movies/getMovieDetails');
+
 program
   .name('moviedb-cli')
   .description('CLI to make requests to themoviedb.org')
@@ -46,8 +48,12 @@ program
 program
   .command(`getMovie`)
   .option('getMovie')
-  .option('--id')
-  .description(`Get data of specific movie`);
-// program.option('--help');
+  .requiredOption('--id <number>')
+  .option('--reviews')
+  .description(`Get data of specific movie`)
+  .action((options) => {
+    console.log(options);
+    getMovie(Number(options.id));
+  });
 
 program.parse();
